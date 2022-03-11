@@ -28,7 +28,7 @@ export class TableComponent implements OnInit {
     this.getInfoCoinToday();
   }
 
-  getDates(){
+  getDates(){ // Get dates and applied a format to them
     for (let i = 0; i < 15; i++) {
       const today = new Date();
       const yesterday = new Date(today);
@@ -39,11 +39,11 @@ export class TableComponent implements OnInit {
     this.getInfoCoin();
   }
 
-  getInfoCoinToday(){
+  getInfoCoinToday(){  // call the api every 60 seconds
     setInterval(this.priceToday, 60000);
   }
 
-  priceToday(){
+  priceToday(){ // call the api to get the price of today
     const today = new Date();
     const newDate = new DatePipe('en-CO').transform(today, 'yyyy-MM-dd');
     this.serviceCoins.getCrypto(newDate? newDate : "").subscribe(result => {
@@ -52,7 +52,7 @@ export class TableComponent implements OnInit {
     });
   }
 
-  getInfoCoin(){
+  getInfoCoin(){ // call the api to get the prices 
     for (let i = 0; i < this.dates.length; i++) {
       this.serviceCoins.getCrypto(this.dates[i]).subscribe(result => {
         console.log(result[0]);
@@ -62,7 +62,7 @@ export class TableComponent implements OnInit {
     this.getInfoCoinToday();
   }
 
-  selectCoin(target: any){
+  selectCoin(target: any){ // call the api to get the prices of the selection date
     this.resultCryptoSelect = [];
     this.resultCryptoEUR = [];
     this.resultCryptoCOP = [];
