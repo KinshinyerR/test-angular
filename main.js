@@ -3,9 +3,11 @@ let appWin;
 
 createWindow = () => {
     appWin = new BrowserWindow({
-        width: 800,
-        height: 600,
-        title: 'Test Tekus',
+        width: 550,
+        height: 900,
+        x: 815,
+        y: 0,
+        title: 'BitcoinPrice',
         resizable: false,
         webPreferences: {
             preload: `${app.getAppPath()}/preload.js`
